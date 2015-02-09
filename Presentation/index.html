@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Capital Laravel Group</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+		#Cover h2 {
+			margin:380px 0 0;
+			color:#000;
+			text-align:center;
+			font-size:45px;
+		}
+		ul.long-list > li {
+			float: left;
+			width: 260px;
+		}
+		ul.long-list > li:before {
+			content: '';
+			width: 0;
+		}
+		ul.long-list > li > strong {
+			color: #FFF;
+			background: #C00;
+			padding: 8px;
+			margin-left: 26px;
+		}
+		ul.long-list > li > ul {
+			margin-left: 0;
+		}
+
+		sup {
+			vertical-align: super;
+			font-size: 60%;
+		}
+
+		.slide-center div div {
+			text-align: center;
+		}
+
+		div.fa {
+			margin-top: 35px;
+			display: block;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Capital Laravel Group</h1>
+	</header>
+
+	<section class="slide cover" style="background-color: #FFF;"><div>
+		<img src="img/capital-laravel.jpg" alt="" style="top: 36%;">
+	</div></section>
+
+	<section class="slide cover" style="background: url(img/laravel5.png) no-repeat; background-size: cover;"><div>
+	</div></section>
+
+	<section class="slide cover" style="background: url(img/laracon.png) no-repeat; background-size: cover;"><div>
+	</div></section>
+
+	<section class="slide cover" id="Cover"><div>
+		<h2>Debugging and improving performance</h2>
+		<img src="img/cover.png" alt="">
+	</div></section>
+
+	<section class="slide slide-center"><div>
+		<h2>Why is my app slow?</h2>
+		<div class="next">
+			<div class="fa fa-database fa-2x" style="color: #69D2E7;"></div>
+			Inefficient database queries
+		</div>
+		<div class="next">
+			<div class="fa fa-external-link fa-2x" style="color: #FA6900;"></div>
+			External API's/webservices
+		</div>
+		<div class="next">
+			<div class="fa fa-code fa-2x" style="color: #8A9B0F;"></div>
+			Inefficient logic/code
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2><span class="fa fa-database" style="color: #69D2E7;"></span> Inefficient database queries</h2>
+		<ul>
+			<li class="next">Laravel query logging<pre>
+<code><mark>Event</mark>::listen('illuminate.query',</code>
+<code>	function($query, $bindings, $time, $name) {</code>
+<code>		<mark>Log</mark>::info(...);</code>
+<code>});</code>
+			</pre></li>
+			<li class="next">Enable MySQL's slow query log</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2><span class="fa fa-external-link" style="color: #FA6900;"></span>
+			External API's/webservices &amp;<br><span class="fa fa-code" style="color: #8A9B0F;"></span>
+			Inefficient logic/code</h2>
+		<ul>
+			<li class="next">Debugger: xdebug, z-ray, phpdbg (PHP 5.6 core)<ul>
+				<li>Profiling</li>
+				<li>Memory usage</li>
+				<li>Detailed stack traces</li>
+			</ul></li>
+			<li class="next"><code>artisan tinker</code></li>
+			<li class="next"><code>dd(...)</code></li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Demo</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Fixing the problem: Caching</h2>
+		<em><a href="http://laravel.com/docs/4.2/cache" target="_blank">http://laravel.com/docs/4.2/cache</a></em>
+<pre><code>$value = <mark>Cache</mark>::remember('fubarposts', $min, function() {</code>
+<code>	return <mark>Posts</mark>::where('foo', 'x')</code>
+<code>		->groupBy('bar')->orderBy('fubar')->get();</code>
+<code>});</code></pre>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Fixing the problem: Queueing</h2>
+		<em><a href="http://laravel.com/docs/4.2/queues" target="_blank">http://laravel.com/docs/4.2/queues</a></em>
+<pre><code><mark>Queue</mark>::push(function($job) use ($id) {</code>
+<code>	// Do something here</code>
+<code>	$job->delete();</code>
+<code>});</code></pre>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Debugging on production</h2>
+		<ul>
+			<li class="next">strace</li>
+			<li class="next">New Relic</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Questions?</h2>
+	</div></section>
+
+	<section class="slide cover" style="background-color: #FFF;"><div>
+		<img src="img/capital-laravel.jpg" alt="" style="top: 36%;">
+	</div></section>
+
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+</body>
+</html>
